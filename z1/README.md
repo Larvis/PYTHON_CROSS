@@ -1,4 +1,4 @@
 # Python_3_PyQt5_DEMO
-Простейший пример оконной программы на Python 3 c PyQt5
+Простейший пример консольной программы на Python 3 
 ![srcreenshot](screenshot.png)
-![srcreenshot2](screenshot2.jpg)
+![srcreenshot2](screenshot2.png)
