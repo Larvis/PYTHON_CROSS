@@ -11,9 +11,11 @@ def random_array(n, m=8, max_value=21):
         sub_array = []  # подмассив с числами
         for j in range(m):
             # от минимального числа (-10) до максимального -1 (max_value - 1 = 20) с шагом (1)
-            number = random.randrange(-10, max_value, 1)
+            number = -1#random.randrange(-10, max_value, 1)
             sub_array.append(number)  # добавление случайного числа в подмассив
         array.append(sub_array)  # добавление подмассива в массив
+    array[0][0] = 1
+    array[-1][-1] = 2
     return array  # возвращается массив с подмассивами внутри
 
 
