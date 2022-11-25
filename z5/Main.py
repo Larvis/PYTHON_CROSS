@@ -10,10 +10,10 @@ from PyQt5.uic import loadUi
 
 list_of_numbers = []
 max_pos_1 = 0
-max_elem_1 = 0
+max_elem_1 = float('-inf')
 
 max_pos_2 = 0
-max_elem_2 = 0
+max_elem_2 = float('-inf')
 
 class Main(QDialog):
     def __init__(self):
@@ -66,7 +66,7 @@ class Main(QDialog):
 
             # sum_of_first_row = find_sum_of_first_row()
             sum_of_rows = max_num_1row + max_num_2row
-            # print(sum_of_rows)
+
             # -*- выполнение задания -*-
             if sum_of_rows >= 100:
                 complete_task() # Финальная обработка
@@ -139,9 +139,10 @@ def find_max(rowCount):
     for i in range(len(list_of_numbers)):
         x = int(list_of_numbers[i])
         if start <= i < end:
+            print(i, x)
             # print(x)
             if rowCount == 1:
-                if max_pos_1 < x:
+                if max_elem_1 < x:
                     max_elem_1 = x
                     max_pos_1 = i
             elif rowCount == 2:
@@ -149,6 +150,8 @@ def find_max(rowCount):
                     max_elem_2 = x
                     max_pos_2 = i
 
+
+    print(max_elem_1, max_elem_2)
 
     if rowCount == 1:
         return max_elem_1
