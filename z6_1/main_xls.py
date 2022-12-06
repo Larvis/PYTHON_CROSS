@@ -4,6 +4,8 @@ from openpyxl.styles import Font
 import os
 import datetime
 import time
+import subprocess, sys
+
 try:
     book = openpyxl.Workbook() # Создание пустого документа
     # book = openpyxl.load_workbook('sample.xlsx') # Открытие существующего документа
@@ -93,6 +95,8 @@ try:
     my_file = "sample.xlsx" # Имя файла
     book.save(my_file) # Сохранение файла на диск
     # os.startfile(my_file) # Запуск файла (открытие MS Excel с созданным документом)
+    opener = "open" if sys.platform == "darwin" else "xdg-open"
+    subprocess.call([opener, my_file])
 
 except Exception as a: # Обработка ошибок
      print("Error!")
