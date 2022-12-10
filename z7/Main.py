@@ -155,7 +155,7 @@ class Form4(QtWidgets.QMainWindow):
         self.btn_back.clicked.connect(self.back)
         self.btn_next.clicked.connect(self.next)
 
-        self.handleActivated(0)
+        # self.handleActivated(0)
 
     def handleActivated(self, index):
         # row = self.tableWidget.currentRow()

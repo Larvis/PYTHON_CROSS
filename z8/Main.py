@@ -18,8 +18,7 @@ class Main(QDialog):
 
         self.setWindowTitle('Сложные табличные вычисления в Python')
 
-        self.setWindowIcon(QtGui.QIcon('images/logo.png'))
-        self.label_img.setPixmap(QPixmap('images/task.png'))
+        self.label_img.setPixmap(QPixmap('images/task_2.jpg'))
         self.label_img.setScaledContents(True)
 
         self.btn_random_number.clicked.connect(self.fill_random_numbers)
@@ -45,26 +44,27 @@ class Main(QDialog):
             i = 0
             j = 1
 
-            multiplication_of_k_i_minus_1 = 1
             sum_of_k_i = 0
-
+            sum_of_k_i_minus = 0
             while i < self.tableWidget.rowCount():
                 item = self.tableWidget.item(i, 0).text()
                 sum_of_k_i += int(item)
+                sum_of_k_i_minus += int(item) - 1
                 try:
                     # item_minus_1 выкинет исключение при первой итерации,
                     # поэтому перехватываем её и выводим none
                     item_minus_1 = self.tableWidget.item(i - 1, 0).text()
-                    multiplication_of_k_i_minus_1 *= int(item_minus_1)
-                    difference_of_sin_of_k_i_and_cos_of_k_minus_1 = (math.sin(
-                        int(item)) ** 2 - math.cos(int(item_minus_1)) ** 2)
 
-                    answer = (((sum_of_k_i ** 2) ** (1 / 3.0)) /
-                              float(multiplication_of_k_i_minus_1)) * \
-                             difference_of_sin_of_k_i_and_cos_of_k_minus_1 ** 3
+                    # answer = (((sum_of_k_i ** 2) ** (1 / 3.0)) /
+                    #           float(multiplication_of_k_i_minus_1)) * \
+                    #          difference_of_sin_of_k_i_and_cos_of_k_minus_1 ** 3
 
-                    self.tableWidget.setItem(i, j,
-                                             QTableWidgetItem(str(format(answer, ".10f"))))
+                    # 9   + 32 =  3,44       / 0,105  + 6
+
+                    answer = ((((int(item) ** 2) + (int(item_minus_1) ** 5)) ** (1 / 3.0)) /
+                        math.tan(math.radians(sum_of_k_i))) + math.factorial(i)
+
+                    self.tableWidget.setItem(i, j, QTableWidgetItem(str(format(answer, ".10f"))))
                 except Exception:
                     self.tableWidget.setItem(i, j, QTableWidgetItem('none'))
 
